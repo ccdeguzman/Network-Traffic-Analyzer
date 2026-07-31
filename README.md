@@ -12,10 +12,10 @@ The goal of this project is to strengthen my understanding of networking and cyb
 src/	
     └── netanal/
 	 	├── capture.py
-    	 ├── cli.py
+    	├── cli.py
  	 	├── __init__.py
  	 	├── display.py
-    	 └── stats.py
+    	└── stats.py
 .gitignore
 README.md
 ```
