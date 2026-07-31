@@ -76,7 +76,7 @@ def packet_line(info: PacketInfo) -> None:
 	src = info.src or "-"
 	dst = info.dst or "-"
 	ports = f":{info.sport} -> :{info.dport}" if info.sport and info.dport else ""
-	comsole.print(
+	console.print(
 		f"[{color}]{info.protocol:<9}[/{color}] {src} {ports} -> {dst} "
 		f"({info.size} bytes)"
 	)
