@@ -67,7 +67,6 @@ sudo venv/bin/netanal capture -i eth0 -c 50 -f "udp port 53"
 sudo venv/bin/netanal capture -i eth0 -v
 ```
 Press `Ctrl+C` at any time to stop and a final summary will show
-```
 ---
 
 ## How It Works
