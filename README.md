@@ -55,7 +55,8 @@ sudo venv/bin/netanal capture -i <interface> [OPTIONS]
 | `-v, --verbose` | Print each packet's flow instead of the live dashboard. |
 | `--top` | Number of top talkers to display (default 10). |
 
-Examples:
+## Examples:
+```
 # Live dashboard, unlimited capture
 sudo venv/bin/netanal capture -i eth0
 
@@ -64,10 +65,17 @@ sudo venv/bin/netanal capture -i eth0 -c 50 -f "udp port 53"
 
 # Verbose per-packet log
 sudo venv/bin/netanal capture -i eth0 -v
-
+```
 Press `Ctrl+C` at any time to stop and a final summary will show
 ```
 ---
+
+## How It Works
+1. **`capture.py`** — wraps `scapy.sniff()`. Each packet is classified by protocol (ARP / TCP / UDP / ICMP / other-IP) and reduced to source/destination IP, ports, and size.
+2. **`stats.py`** — a `TrafficStats` object accumulates protocol counts and per-endpoint byte/packet totals as packets arrive, and derives bandwidth and top-talker rankings on demand.
+3. **`display.py`** — renders a live-refreshing Rich dashboard, or streams a one-line-per-packet log in verbose mode.
+4. **`cli.py`** — a Click command (`netanal capture`) wires interface/filter/count options to the capture loop.
+
 
 ## What I Learned
 - Network packet capture using Scapy
